@@ -35,7 +35,7 @@ const start = (aruga = new Client()) => {
 	    })
 	    } else {
         await aruga.simulateTyping(chat.id, true).then(async () => {
-          await aruga.sendText(chat.id, `Que Onda, Soy DebianBOT. Para averiguar los comandos de este bot usa ${prefix}menu`)
+          await aruga.sendText(chat.id, `Que Onda~, Soy DebianBOT. Para averiguar los comandos de este bot usa ${prefix}menu`)
         })
 	    }
 	}
