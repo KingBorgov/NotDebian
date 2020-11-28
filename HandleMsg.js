@@ -187,7 +187,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             const loadedMsg = await aruga.getAmountOfLoadedMessages()
             const chatIds = await aruga.getAllChatIds()
             const groups = await aruga.getAllGroups()
-            aruga.sendText(from, `Status :\n- *${loadedMsg}* Loaded Messages\n- *${groups.length}* Group Chats\n- *${chatIds.length - groups.length}* Personal Chats\n- *${chatIds.length}* Total Chats`)
+            aruga.sendText(from, `Estadisticas :\n- *${loadedMsg}* Mensajes Cargados\n- *${groups.length}* Chats Del Grupo\n- *${chatIds.length - groups.length}* Chats Personales\n- *${chatIds.length}* Total De Chats`)
             break
         }
 
