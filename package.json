@@ -1,20 +1,20 @@
 {
-  "name": "whatsapp-bot",
+  "name": "DEBIAN BOT",
   "version": "2.0.0",
-  "description": "Whatsapp Bot - Node Js",
+  "description": "DebianBOT",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "jagal",
+  "author": "NotDebian",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaga-l/jagal-bot.git"
+    "url": "https://github.com/NotDebian/NotDebian.git"
   },
   "bugs": {
-    "url": "https://github.com/jaga-l/jagal-bot/issues"
+    "url": "https://github.com/NotDebian/NotDebian/issues"
   },
-  "homepage": "https://github.com/jaga-l/jagal-bot",
+  "homepage": "https://github.com/NotDebian/NotDebian",
   "license": "ISC",
   "dependencies": {
     "@open-wa/wa-automate": "^3.0.16",
