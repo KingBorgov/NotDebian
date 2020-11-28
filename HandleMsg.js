@@ -168,7 +168,7 @@ module.exports = HandleMsg = async (aruga, message) => {
                 await aruga.joinGroupViaLink(linkgrup)
                       .then(async () => {
                           await aruga.sendText(from, '¡Se unió al grupo con éxito a través del enlace!')
-                          await aruga.sendText(chekgrup.id, `Que Onda~, soy Aruga BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
+                          await aruga.sendText(chekgrup.id, `Que Onda, Soy DebianBOT. Para averiguar los comandos de este bot usa ${prefix}menu`)
                       })
             } else {
                 let cgrup = await aruga.getAllGroups()
