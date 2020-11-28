@@ -147,16 +147,16 @@ module.exports = HandleMsg = async (aruga, message) => {
             await aruga.sendText(from, menuId.textAdmin())
             break
             case 'donasi':
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             await aruga.sendText(from, menuId.textDonasi())
             break
-        case 'contactojagal':
+        case 'contactodebian':
             await aruga.sendContact(from, ownerNumber)
             .then(() => aruga.sendText(from, 'Si desea solicitar una función, Escribeme a mi número personal.'))
             break
-        case 'jagal':
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
-            await aruga.sendText(from, menuId.textJagal())
+        case 'debian':
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
+            await aruga.sendText(from, menuId.textDebian())
             break
         case 'join':
             if (args.length == 0) return aruga.reply(from, `Si deseas invitar a el bot a tu grupo invitalo\no usa ${prefix}join [Enlace del grupo]`, id)
@@ -318,7 +318,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             }
             break
         case 'nulis':
-            if (args.length == 0) return aruga.reply(from, `Haz que el BOT transforme el texto que enviaste en una imagen\nUsando: ${prefix}nulis [TEXTO]\n\nejemplo: ${prefix}nulis JAGAL.`, id)
+            if (args.length == 0) return aruga.reply(from, `Haz que el BOT transforme el texto que enviaste en una imagen\nUsando: ${prefix}nulis [TEXTO]\n\nejemplo: ${prefix}nulis NotDebian.`, id)
             const nulisq = body.slice(7)
             const nulisp = await rugaapi.tulis(nulisq)
             await aruga.sendImage(from, `${nulisp}`, '', 'Tu Texto....', id)
@@ -610,7 +610,7 @@ module.exports = HandleMsg = async (aruga, message) => {
         
         // Search Any
         case 'images':
-            if (args.length == 0) return aruga.reply(from, `Para buscar imágenes en GOOGLE\nUsa: ${prefix}images [LO QUE QUIERAS BUSCAR]\nejemplo: ${prefix}images jagal`, id)
+            if (args.length == 0) return aruga.reply(from, `Para buscar imágenes en GOOGLE\nUsa: ${prefix}images [LO QUE QUIERAS BUSCAR]\nejemplo: ${prefix}images NotDebian`, id)
             const cariwall = body.slice(8)
             const hasilwall = await images.fdci(cariwall)
             await aruga.sendFileFromUrl(from, hasilwall, '', '', id)
@@ -619,7 +619,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             })
             break
         case 'sreddit':
-            if (args.length == 0) return aruga.reply(from, `Para buscar imágenes en el sub de reddit\nUsa: ${prefix}sreddit [LO QUE QUIERAS BUSCAR]\nejemplo: ${prefix}sreddit jagal`, id)
+            if (args.length == 0) return aruga.reply(from, `Para buscar imágenes en el sub de reddit\nUsa: ${prefix}sreddit [LO QUE QUIERAS BUSCAR]\nejemplo: ${prefix}sreddit NotDebian`, id)
             const carireddit = body.slice(9)
             const hasilreddit = await images.sreddit(carireddit)
             await aruga.sendFileFromUrl(from, hasilreddit, '', '', id)
@@ -862,7 +862,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
             if (!isBotGroupAdmins) return aruga.reply(from, 'Falló, agregue el bot como administrador del grupo.', id)
             if (mentionedJidList.length === 0) return aruga.reply(from, 'Lo sentimos, el formato del mensaje es incorrecto.\nEtiqueta a una o más personas para eliminarlas', id)
-            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'JAJAJAJA INTENTAS HACER UNA AUTOELIMINACIÓN? .\nJagalBOT no puede autoeliminarse.', id)
+            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'JAJAJAJA INTENTAS HACER UNA AUTOELIMINACIÓN? .\DebianBOT no puede autoeliminarse.', id)
             await aruga.sendTextWithMentions(from, `Solicitud recibida, se ha kickeado a:\n${mentionedJidList.map(x => `@${x.replace('@c.us', '')}`).join('\n')}`)
             for (let i = 0; i < mentionedJidList.length; i++) {
                 if (groupAdmins.includes(mentionedJidList[i])) return await aruga.sendText(from, 'Error, no puede eliminar el administrador del grupo, procede primero a quitarle administración e intentalo nuevamente.')
@@ -875,7 +875,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             if (!isBotGroupAdmins) return aruga.reply(from, 'Falló, agregue el bot como administrador del grupo.', id)
             if (mentionedJidList.length !== 1) return aruga.reply(from, 'Lo siento, solo puedo agregar a 1 usuario de administrador a la vez.', id)
             if (groupAdmins.includes(mentionedJidList[0])) return await aruga.reply(from, 'Lo sento, el usuario ya es administrador.', id)
-            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'JAJAJAJA INTENTAS DARME AUTOADMINISTRACIÓN? \nJagalBOT no puede darse administración a si mismo', id)
+            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'JAJAJAJA INTENTAS DARME AUTOADMINISTRACIÓN? \nDebianBOT no puede darse administración a si mismo', id)
             await aruga.promoteParticipant(groupId, mentionedJidList[0])
             await aruga.sendTextWithMentions(from, `Solicitud aceptada, el usuario @${mentionedJidList[0].replace('@c.us', '')} a sido agregado como administrador.`)
             break
@@ -966,10 +966,10 @@ module.exports = HandleMsg = async (aruga, message) => {
 			
         //Owner Group
         case 'kickall': //mengeluarkan semua member
-        if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+        if (!isGroupMsg) return aruga.reply(from, 'Este comando solo se puede usar dentro de un grupo!', id)
         let isOwner = chat.groupMetadata.owner == pengirim
-        if (!isOwner) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai oleh owner grup!', id)
-        if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
+        if (!isOwner) return aruga.reply(from, 'Este comando solo puede ser utilizado por el dueño del grupo.', id)
+        if (!isBotGroupAdmins) return aruga.reply(from, 'Error, agregue el bot como administrador del grupo.', id)
             const allMem = await aruga.getGroupMembers(groupId)
             for (let i = 0; i < allMem.length; i++) {
                 if (groupAdmins.includes(allMem[i].id)) {
@@ -983,7 +983,7 @@ module.exports = HandleMsg = async (aruga, message) => {
 
         //Owner Bot
         case 'ban':
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             if (args.length == 0) return aruga.reply(from, `Para prohibir que alguien use comandos\n\nuse \n${prefix}ban add xxxxx (Para Agregar A Alguien A La Lista Negra)\n${prefix}ban del xxxxx (Para Eliminar A Alguien De La Lista Negra)\n\nPara añadir mas rapidamente a mas de una persona simplemente usar:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
                 banned.push(args[1]+'@c.us')
@@ -1004,19 +1004,19 @@ module.exports = HandleMsg = async (aruga, message) => {
             }
             break
         case 'bc': //untuk broadcast atau promosi
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             if (args.length == 0) return aruga.reply(from, `Para enviar este comando usa:\n${prefix}bc [mensaje]`)
             let msg = body.slice(4)
             const chatz = await aruga.getAllChatIds()
             for (let idk of chatz) {
                 var cvk = await aruga.getChatById(idk)
-                if (!cvk.isReadOnly) aruga.sendText(idk, `〘 *_• ʝ Ⱥ Ǥ Ⱥ L̲ •_* 〙\n\n${msg}`)
-                if (cvk.isReadOnly) aruga.sendText(idk, `〘 *_• ʝ Ⱥ Ǥ Ⱥ L̲ •_* 〙\n\n${msg}`)
+                if (!cvk.isReadOnly) aruga.sendText(idk, `〘 *_• NotDebian •_* 〙\n\n${msg}`)
+                if (cvk.isReadOnly) aruga.sendText(idk, `〘 *_• NotDebian •_* 〙\n\n${msg}`)
             }
             aruga.reply(from, 'Broadcast Enviado Con Exito!', id)
             break
         case 'leaveall': //eliminar bots de todos los grupos y eliminar el chat
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             const allChatz = await aruga.getAllChatIds()
             const allGroupz = await aruga.getAllGroups()
             for (let gclist of allGroupz) {
@@ -1027,7 +1027,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             aruga.reply(from, 'El bot ha salido exitosamente de todos los grupos!', id)
             break
         case 'clearall': //Elimina todos los mensajes de la cuenta del bot
-            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *JAGAL* dueño del bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             const allChatx = await aruga.getAllChats()
             for (let dchat of allChatx) {
                 await aruga.deleteChat(dchat.id)
