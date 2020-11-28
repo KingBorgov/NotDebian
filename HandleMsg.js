@@ -1026,6 +1026,18 @@ module.exports = HandleMsg = async (aruga, message) => {
             }
             aruga.reply(from, 'El bot ha salido exitosamente de todos los grupos!', id)
             break
+        case '!mentionall':
+            if (!isGroupMsg) return aruga.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Perintah ini hanya bisa di gunakan oleh admin group', id)
+            const groupMem = await aruga.getGroupMembers(groupId)
+            let hehe = '╔══✪〘 Mention All 〙✪══\n'
+            for (let i = 0; i < groupMem.length; i++) {
+                hehe += '╠➥'
+                hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
+            }
+            hehe += '╚═〘 Shinomiya Kaguya BOT 〙'
+            await aruga.sendTextWithMentions(from, hehe)
+            break
         case 'clearall': //Elimina todos los mensajes de la cuenta del bot
             if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotDebian* dueño del bot', id)
             const allChatx = await aruga.getAllChats()
