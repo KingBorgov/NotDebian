@@ -583,7 +583,7 @@ module.exports = HandleMsg = async (aruga, message) => {
                 aruga.reply(from, `Lo sentimos el comando es erroneo usa${prefix}anime para ver la lista de variantes disponibles.`)
             }
             break
-        case 'kpop':
+        case 'kpopbasura':
             if (args.length == 0) return aruga.reply(from, `Untuk menggunakan ${prefix}kpop\nSilahkan ketik: ${prefix}kpop [query]\nContoh: ${prefix}kpop bts\n\nquery yang tersedia:\nblackpink, exo, bts`, id)
             if (args[0] == 'blackpink' || args[0] == 'exo' || args[0] == 'bts') {
                 fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/kpop/' + args[0] + '.txt')
@@ -600,7 +600,7 @@ module.exports = HandleMsg = async (aruga, message) => {
                 aruga.reply(from, `Maaf query tidak tersedia. Silahkan ketik ${prefix}kpop untuk melihat list query`)
             }
             break
-        case 'memes':
+        case 'memesfail':
             const randmeme = await meme.random()
             aruga.sendFileFromUrl(from, randmeme, '', '', id)
             .catch(() => {
