@@ -1026,14 +1026,22 @@ module.exports = HandleMsg = async (aruga, message) => {
             }
             aruga.reply(from, 'El bot ha salido exitosamente de todos los grupos!', id)
             break
+        case '!adminlist':
+            if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+            let mimin = ''
+            for (let admon of groupAdmins) {
+                mimin += `➸ @${admon.replace(/@c.us/g, '')}\n` 
+            }
+            await client.sendTextWithMentions(from, mimin)
+            break
         case '!mentionall':
             if (!isGroupMsg) return aruga.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (!isGroupAdmins) return aruga.reply(from, 'Perintah ini hanya bisa di gunakan oleh admin group', id)
-            const groupMem = await aruga.getGroupMembers(groupId)
+            const mentionedJidList = await aruga.mentionedJidList(groupId)
             let hehe = '╔══✪〘 Mention All 〙✪══\n'
-            for (let i = 0; i < groupMem.length; i++) {
+            for (let i = 0; i < mentionedJidList.length; i++) {
                 hehe += '╠➥'
-                hehe += ` @${groupMem[i].id.replace(/@c.us/g, '')}\n`
+                hehe += ` @${mentionedJidList[i].id.replace(/@c.us/g, '')}\n`
             }
             hehe += '╚═〘 Shinomiya Kaguya BOT 〙'
             await aruga.sendTextWithMentions(from, hehe)
